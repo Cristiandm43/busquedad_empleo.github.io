@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de Empleo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Búsqueda de Empleo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="soporte.html">Soporte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Acerca de Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="membresia.html">Membresía</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="asesoria.html">Asesoría HV</a>
+                    </li>
+                    <li class="nav-item" id="account-button">
+                        <a class="nav-link btn btn-primary" href="acceso.html" id="login-button">
+                            <span style="color: rgb(54, 56, 58);">Acceder a la cuenta</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <!-- Columna de filtros -->
+                <div class="col-md-3">
+                    <div class="filter-box">
+                        <h2>Filtros</h2>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="salario" id="salario-todos" value="todos" checked>
+                            <label class="form-check-label" for="salario-todos">
+                                Todos
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="salario" id="salario-menos-de-1m" value="menos-de-1m">
+                            <label class="form-check-label" for="salario-menos-de-1m">
+                                Menos de 1 millón
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="salario" id="salario-1m-a-1.5m" value="1m-a-1.5m">
+                            <label class="form-check-label" for="salario-1m-a-1.5m">
+                                1 a 1.5 millones
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="salario" id="salario-1.5m-a-2.5m" value="1.5m-a-2.5m">
+                            <label class="form-check-label" for="salario-1.5m-a-2.5m">
+                                1.5 a 2.5 millones
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="salario" id="salario-mas-de-2.5m" value="mas-de-2.5m">
+                            <label class="form-check-label" for="salario-mas-de-2.5m">
+                                2.5 millones o más
+                            </label>
+                        </div>
+                        <div class="filter-section">
+                            <h4>Modalidad</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modalidad" id="modalidad-remoto" value="remoto">
+                                <label class="form-check-label" for="modalidad-remoto">
+                                    Remoto
+                                </label>
+                            </div>
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modalidad" id="modalidad-presencial" value="presencial">
+                                <label class="form-check-label" for="modalidad-presencial">
+                                    Presencial
+                                </label>
+                            </div>
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modalidad" id="modalidad-hibrido" value="hibrido">
+                                <label class="form-check-label" for="modalidad-hibrido">
+                                    Híbrido
+                                </label>
+                            </div>
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="modalidad" id="modalidad-todos" value="todos" checked>
+                                <label class="form-check-label" for="modalidad-todos">
+                                    Todos
+                                </label>
+                            </div>
+                        </div>                        
+                        <div class="filter-section">
+                            <h4>Ciudad</h4>
+                            <select class="form-control" id="ciudad">
+                                <option value="todas">Todas las ciudades</option>
+                                <option value="bogota">Bogotá</option>
+                                <option value="medellin">Medellín</option>
+                                <option value="cali">Cali</option>
+                                <option value="barranquilla">Barranquilla</option>
+                                <option value="cartagena">Cartagena</option>
+                                <option value="bucaramanga">Bucaramanga</option>
+                                <!-- Agregar mas ciudades -->
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <button id="aplicar-filtros-button" class="btn btn-primary" onclick="aplicarFiltros()">Aplicar Filtros</button>
+                </div>
+                <!-- Columna de listado de trabajos -->
+                <div class="col-md-9">
+                    <div class="col-md-3">
+                        <!-- Columna de ordenar por -->
+                        <div class="order-by">
+                            <h4>Ordenar por</h4>
+                            <select id="ordenar-por" name="ordenar-por">
+                                <option value="fecha">Fecha</option>
+                                <option value="relevancia">Relevancia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" id="busqueda" placeholder="Buscar...">
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <h2>Listado de Trabajos</h2>
+                    <ul class="list-group" id="listaElementos">
+                        <li class="list-group-item" data-modalidad="remoto" data-ciudad="bogota" data-salario="2000000" data-relevancia="5" data-fecha="2023-09-14">
+                            <h3><a href="pagina.html">Desarrollador Web</a></h3>
+                            <p>Descripción del empleo: Desarrollo y mantenimiento de sitios web.</p>
+                            <p>Empresa contratante: ABC Web Solutions</p>
+                            <p>Ubicación: Bogotá</p>
+                            <p>Fecha de publicación: 2023-09-15</p>
+                            <div class="job-image">
+                                <img src="img/1.jpg" alt="Imagen de Desarrollo Web" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        <li class="list-group-item" data-modalidad="presencial" data-ciudad="medellin" data-salario="1500000" data-relevancia="3" data-fecha="2023-09-14">
+                            <h3><a href="pagina2.html">Diseñador Gráfico</a></h3>
+                            <p>Descripción del empleo: Diseño de gráficos y materiales visuales.</p>
+                            <p>Empresa contratante: XYZ Design Studio</p>
+                            <p>Ubicación: Medellín</p>
+                            <p>Fecha de publicación: 2023-09-14</p>
+                            <div class="job-image">
+                                <img src="img/2.jpg" alt="Imagen de Diseño Gráfico" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        <li class="list-group-item" data-modalidad="hibrido" data-ciudad="cali" data-salario="1000000" data-relevancia="4" data-fecha="2023-09-12">
+                            <h3><a href="pagina3.html">Gerente de Proyecto</a></h3>
+                            <p>Descripción del empleo: Gestión de proyectos y equipos de trabajo.</p>
+                            <p>Empresa contratante: GlobalCorp</p>
+                            <p>Ubicación: Cali</p>
+                            <p>Fecha de publicación: 2023-09-12</p>
+                            <div class="job-image">
+                                <img src="img/3.jpg" alt="Imagen de Diseño Gráfico" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        <li class="list-group-item" data-modalidad="remoto" data-ciudad="medellin" data-salario="3000000" data-relevancia="2" data-fecha="2023-09-10">
+                            <h3><a href="pagina4.html">Desarrollador de Apps</a></h3>
+                            <p>Descripción del empleo: Desarrollo de aplicaciones móviles.</p>
+                            <p>Empresa contratante: MobileTech</p>
+                            <p>Ubicación: Medellín</p>
+                            <p>Fecha de publicación: 2023-09-10</p>
+                            <div class="job-image">
+                                <img src="img/8.jpg" alt="Imagen de Desarrollo de Apps" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        <li class="list-group-item" data-modalidad="remoto" data-ciudad="barranquilla" data-salario="1800000" data-relevancia="1" data-fecha="2023-09-08">
+                            <h3><a href="pagina5.html">Analista de Datos</a></h3>
+                            <p>Descripción del empleo: Análisis de datos y generación de informes.</p>
+                            <p>Empresa contratante: DataInsights</p>
+                            <p>Ubicación: Barranquilla</p>
+                            <p>Fecha de publicación: 2023-09-08</p>
+                            <div class="job-image">
+                                <img src="img/9.jpg" alt="Imagen de Analista de Datos" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        <li class="list-group-item" data-modalidad="remoto" data-ciudad="medellin" data-salario="2200000" data-relevancia="4" data-fecha="2023-09-14">
+                            <h3><a href="pagina1.html">Desarrollador de Software</a></h3>
+                            <p>Descripción del empleo: Desarrollo de software a medida.</p>
+                            <p>Empresa contratante: SoftDev Solutions</p>
+                            <p>Ubicación: Medellín</p>
+                            <p>Fecha de publicación: 2023-09-14</p>
+                            <div class="job-image">
+                                <img src="img/21.jpg" alt="Imagen de Desarrollador de Software" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                        <li class="list-group-item" data-modalidad="presencial" data-ciudad="bogota" data-salario="1600000" data-relevancia="5" data-fecha="2023-09-14">
+                            <h3><a href="pagina2.html">Ingeniero de Redes</a></h3>
+                            <p>Descripción del empleo: Diseño y mantenimiento de redes de comunicación.</p>
+                            <p>Empresa contratante: NetCom Solutions</p>
+                            <p>Ubicación: Bogotá</p>
+                            <p>Fecha de publicación: 2023-09-14</p>
+                            <div class="job-image">
+                                <img src="img/10.jpg" alt="Imagen de Ingeniero de Redes" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                        <li class="list-group-item" data-modalidad="hibrido" data-ciudad="cali" data-salario="1100000" data-relevancia="3" data-fecha="2023-09-12">
+                            <h3><a href="pagina3.html">Especialista en Marketing</a></h3>
+                            <p>Descripción del empleo: Planificación y ejecución de estrategias de marketing.</p>
+                            <p>Empresa contratante: MarkInnovate</p>
+                            <p>Ubicación: Cali</p>
+                            <p>Fecha de publicación: 2023-09-12</p>
+                            <div class="job-image">
+                                <img src="img/11.png" alt="Imagen de Especialista en Marketing" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                        <li class="list-group-item" data-modalidad="remoto" data-ciudad="barranquilla" data-salario="3100000" data-relevancia="2" data-fecha="2023-09-10">
+                            <h3><a href="pagina4.html">Analista de Seguridad Informática</a></h3>
+                            <p>Descripción del empleo: Análisis y mejora de la seguridad de la información.</p>
+                            <p>Empresa contratante: SecureTech</p>
+                            <p>Ubicación: Barranquilla</p>
+                            <p>Fecha de publicación: 2023-09-10</p>
+                            <div class="job-image">
+                                <img src="img/12.jpg" alt="Imagen de Analista de Seguridad Informática" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                        <li class="list-group-item" data-modalidad="hibrido" data-ciudad="cartagena" data-salario="2000000" data-relevancia="1" data-fecha="2023-09-08">
+                            <h3><a href="pagina5.html">Asistente Administrativo</a></h3>
+                            <p>Descripción del empleo: Apoyo en tareas administrativas y de oficina.</p>
+                            <p>Empresa contratante: AdminPlus Co.</p>
+                            <p>Ubicación: Cartagena</p>
+                            <p>Fecha de publicación: 2023-09-08</p>
+                            <div class="job-image">
+                                <img src="img/13.jpg" alt="Imagen de Asistente Administrativo" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        <li class="list-group-item" data-modalidad="presencial" data-ciudad="medellin" data-salario="1800000" data-relevancia="3" data-fecha="2023-09-15">
+                            <h3><a href="pagina1.html">Ingeniero de Software</a></h3>
+                            <p>Descripción del empleo: Desarrollo y mantenimiento de aplicaciones empresariales.</p>
+                            <p>Empresa contratante: SoftWorks Inc.</p>
+                            <p>Ubicación: Medellín</p>
+                            <p>Fecha de publicación: 2023-09-15</p>
+                            <div class="job-image">
+                                <img src="img/20.jpg" alt="Imagen de Ingeniero de Software" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                        <li class="list-group-item" data-modalidad="remoto" data-ciudad="bogota" data-salario="2100000" data-relevancia="4" data-fecha="2023-09-14">
+                            <h3><a href="pagina2.html">Analista de Negocios</a></h3>
+                            <p>Descripción del empleo: Análisis de procesos de negocios y propuestas de mejora.</p>
+                            <p>Empresa contratante: BizAnalytics Ltd.</p>
+                            <p>Ubicación: Bogotá</p>
+                            <p>Fecha de publicación: 2023-09-14</p>
+                            <div class="job-image">
+                                <img src="img/14.jpg" alt="Imagen de Analista de Negocios" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                        <li class="list-group-item" data-modalidad="hibrido" data-ciudad="cali" data-salario="1200000" data-relevancia="5" data-fecha="2023-09-13">
+                            <h3><a href="pagina3.html">Diseñador Web Front-end</a></h3>
+                            <p>Descripción del empleo: Diseño y desarrollo de interfaces web interactivas.</p>
+                            <p>Empresa contratante: WebCrafters</p>
+                            <p>Ubicación: Cali</p>
+                            <p>Fecha de publicación: 2023-09-13</p>
+                            <div class="job-image">
+                                <img src="img/15.jpg" alt="Imagen de Diseñador Web Front-end" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                        <li class="list-group-item" data-modalidad="presencial" data-ciudad="barranquilla" data-salario="1600000" data-relevancia="2" data-fecha="2023-09-11">
+                            <h3><a href="pagina4.html">Analista de Marketing Digital</a></h3>
+                            <p>Descripción del empleo: Gestión de estrategias de marketing en línea.</p>
+                            <p>Empresa contratante: DigitalMasters</p>
+                            <p>Ubicación: Barranquilla</p>
+                            <p>Fecha de publicación: 2023-09-11</p>
+                            <div class="job-image">
+                                <img src="img/16.png" alt="Imagen de Analista de Marketing Digital" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                        <li class="list-group-item" data-modalidad="hibrido" data-ciudad="cartagena" data-salario="1900000" data-relevancia="1" data-fecha="2023-09-09">
+                            <h3><a href="pagina5.html">Asistente de Recursos Humanos</a></h3>
+                            <p>Descripción del empleo: Soporte en actividades de gestión de personal.</p>
+                            <p>Empresa contratante: HRSupport Inc.</p>
+                            <p>Ubicación: Cartagena</p>
+                            <p>Fecha de publicación: 2023-09-09</p>
+                            <div class="job-image">
+                                <img src="img/17.png" alt="Imagen de Asistente de Recursos Humanos" width="150">
+                            </div>
+                            <div style="clear:both;"></div>
+                        </li>
+                        
+                    </ul>
+                    <div id="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled" id="prev-page">
+                                <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                            </li>
+                            <!-- Generar números de página aquí -->
+                            <li class="page-item" id="next-page">
+                                <a class="page-link" href="#">Siguiente</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <section class="job-search">
+            <!-- Formulario de búsqueda de empleo -->
+        </section>
+        
+        <section class="job-listings">
+            <!-- Listado de trabajos (puedes usar una tabla, una lista, etc.) -->
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-box">
+                        &copy; 2023 Búsqueda de Empleo
+                        <br>
+                        <span class="owners">Propietarios: Miguel Parada, Cristian Machado y Daniel Martinez</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="control.js"></script>
+</body>
+</html>
